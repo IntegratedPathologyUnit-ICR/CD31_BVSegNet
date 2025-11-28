@@ -1,0 +1,326 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>API Reference &mdash; Whole Slide Image Annotation Extractor 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=8d563738"></script>
+      <script src="_static/doctools.js?v=9a2dae69"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Examples" href="examples.html" />
+    <link rel="prev" title="Usage" href="usage.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Whole Slide Image Annotation Extractor
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#core-functions">Core Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#function-details">Function Details</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#load-geojson">load_geojson</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#find-matching-geojson">find_matching_geojson</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#load-slide-image">load_slide_image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-bounding-box-from-polygon">get_bounding_box_from_polygon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-tiles-and-masks-for-slide">create_tiles_and_masks_for_slide</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#process-batch">process_batch</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#data-structures">Data Structures</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#statistics-dictionary">Statistics Dictionary</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Whole Slide Image Annotation Extractor</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">API Reference</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/api.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="api-reference">
+<h1>API Reference<a class="headerlink" href="#api-reference" title="Link to this heading"></a></h1>
+<p>This section provides detailed documentation for all functions and classes in the module.</p>
+<section id="core-functions">
+<h2>Core Functions<a class="headerlink" href="#core-functions" title="Link to this heading"></a></h2>
+</section>
+<section id="function-details">
+<h2>Function Details<a class="headerlink" href="#function-details" title="Link to this heading"></a></h2>
+<section id="load-geojson">
+<h3>load_geojson<a class="headerlink" href="#load-geojson" title="Link to this heading"></a></h3>
+<p>Loads a GeoJSON file and extracts all polygon annotations.</p>
+<dl class="simple">
+<dt><strong>Parameters:</strong></dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">geojson_path</span></code> (str): Path to the GeoJSON file</p></li>
+</ul>
+</dd>
+<dt><strong>Returns:</strong></dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">list</span></code>: List of Shapely polygon objects representing annotations</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Example:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">annotations</span> <span class="o">=</span> <span class="n">load_geojson</span><span class="p">(</span><span class="s1">&#39;annotations.geojson&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Loaded </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">annotations</span><span class="p">)</span><span class="si">}</span><span class="s2"> annotations&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="find-matching-geojson">
+<h3>find_matching_geojson<a class="headerlink" href="#find-matching-geojson" title="Link to this heading"></a></h3>
+<p>Finds a matching GeoJSON file for a slide image based on filename prefix matching.</p>
+<dl class="simple">
+<dt><strong>Parameters:</strong></dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">slide_path</span></code> (str): Path to the slide image file</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">geojson_dir</span></code> (str): Directory containing GeoJSON files</p></li>
+</ul>
+</dd>
+<dt><strong>Returns:</strong></dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">str</span></code> or <code class="docutils literal notranslate"><span class="pre">None</span></code>: Path to matching GeoJSON file, or None if not found</p></li>
+</ul>
+</dd>
+<dt><strong>Matching Rules:</strong></dt><dd><ul class="simple">
+<li><p>Slides starting with <code class="docutils literal notranslate"><span class="pre">DR</span></code>: Match on first 5 characters</p></li>
+<li><p>Slides starting with <code class="docutils literal notranslate"><span class="pre">B</span></code>: Match on first 8 characters</p></li>
+<li><p>Other slides: Match on first 5 characters (default)</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Example:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">geojson_path</span> <span class="o">=</span> <span class="n">find_matching_geojson</span><span class="p">(</span><span class="s1">&#39;DR123_slide.tif&#39;</span><span class="p">,</span> <span class="s1">&#39;/path/to/geojson&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">geojson_path</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Found matching GeoJSON: </span><span class="si">{</span><span class="n">geojson_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="load-slide-image">
+<h3>load_slide_image<a class="headerlink" href="#load-slide-image" title="Link to this heading"></a></h3>
+<p>Loads a whole slide image using tifffile and converts it to BGR format for OpenCV compatibility.</p>
+<dl class="simple">
+<dt><strong>Parameters:</strong></dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">slide_path</span></code> (str): Path to the slide image file</p></li>
+</ul>
+</dd>
+<dt><strong>Returns:</strong></dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">numpy.ndarray</span></code>: Slide image in BGR format (height, width, 3)</p></li>
+</ul>
+</dd>
+<dt><strong>Supported Formats:</strong></dt><dd><ul class="simple">
+<li><p>Grayscale (converted to BGR)</p></li>
+<li><p>RGB (converted to BGR)</p></li>
+<li><p>RGBA (converted to BGR)</p></li>
+</ul>
+</dd>
+<dt><strong>Raises:</strong></dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ValueError</span></code>: If the slide image cannot be loaded</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Example:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">slide</span> <span class="o">=</span> <span class="n">load_slide_image</span><span class="p">(</span><span class="s1">&#39;slide.tif&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Slide shape: </span><span class="si">{</span><span class="n">slide</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="get-bounding-box-from-polygon">
+<h3>get_bounding_box_from_polygon<a class="headerlink" href="#get-bounding-box-from-polygon" title="Link to this heading"></a></h3>
+<p>Extracts bounding box coordinates from a Shapely polygon.</p>
+<dl class="simple">
+<dt><strong>Parameters:</strong></dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">polygon</span></code>: Shapely polygon object</p></li>
+</ul>
+</dd>
+<dt><strong>Returns:</strong></dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">tuple</span></code>: (x_min, y_min, x_max, y_max)</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Example:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bbox</span> <span class="o">=</span> <span class="n">get_bounding_box_from_polygon</span><span class="p">(</span><span class="n">polygon</span><span class="p">)</span>
+<span class="n">x_min</span><span class="p">,</span> <span class="n">y_min</span><span class="p">,</span> <span class="n">x_max</span><span class="p">,</span> <span class="n">y_max</span> <span class="o">=</span> <span class="n">bbox</span>
+</pre></div>
+</div>
+</section>
+<section id="create-tiles-and-masks-for-slide">
+<h3>create_tiles_and_masks_for_slide<a class="headerlink" href="#create-tiles-and-masks-for-slide" title="Link to this heading"></a></h3>
+<p>Creates tile images and corresponding mask tiles for a single slide.</p>
+<dl class="simple">
+<dt><strong>Parameters:</strong></dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">slide_path</span></code> (str): Path to the whole slide image</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">annotations</span></code> (list): List of annotation polygons from GeoJSON</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">output_dir</span></code> (str): Output directory for tiles and masks</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tile_size</span></code> (int, optional): Size of output tiles in pixels (default: 2000)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mask_value</span></code> (int, optional): Pixel value for annotated regions (default: 255)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">background_value</span></code> (int, optional): Pixel value for background (default: 0)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">save_only_annotated</span></code> (bool, optional): Only save tiles with annotations (default: False)</p></li>
+</ul>
+</dd>
+<dt><strong>Returns:</strong></dt><dd><ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">dict</span></code>: Statistics dictionary with keys:</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">filename</span></code>: Slide basename</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">total_tiles</span></code>: Total number of tiles processed</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tiles_with_annotations</span></code>: Number of tiles containing annotations</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">saved_tiles</span></code>: Number of tiles saved</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tiles_dir</span></code>: Path to tiles directory</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">masks_dir</span></code>: Path to masks directory</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Example:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">stats</span> <span class="o">=</span> <span class="n">create_tiles_and_masks_for_slide</span><span class="p">(</span>
+    <span class="s1">&#39;slide.tif&#39;</span><span class="p">,</span>
+    <span class="n">annotations</span><span class="p">,</span>
+    <span class="s1">&#39;output/&#39;</span><span class="p">,</span>
+    <span class="n">tile_size</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span>
+    <span class="n">save_only_annotated</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Saved </span><span class="si">{</span><span class="n">stats</span><span class="p">[</span><span class="s1">&#39;saved_tiles&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> tiles&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="process-batch">
+<h3>process_batch<a class="headerlink" href="#process-batch" title="Link to this heading"></a></h3>
+<p>Processes a batch of slides and their matching GeoJSON files.</p>
+<dl class="simple">
+<dt><strong>Parameters:</strong></dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">slides_dir</span></code> (str): Directory containing slide images</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">geojson_dir</span></code> (str): Directory containing GeoJSON files</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">output_dir</span></code> (str): Output directory for all tiles and masks</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tile_size</span></code> (int, optional): Size of output tiles (default: 2000)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mask_value</span></code> (int, optional): Pixel value for annotated regions (default: 255)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">background_value</span></code> (int, optional): Pixel value for background (default: 0)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">save_only_annotated</span></code> (bool, optional): Only save tiles with annotations (default: False)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">slide_extensions</span></code> (list, optional): List of file extensions to process
+(default: [‘.tif’, ‘.tiff’, ‘.svs’, ‘.ndpi’, ‘.scn’, ‘.mrxs’, ‘.jpg’, ‘.png’])</p></li>
+</ul>
+</dd>
+<dt><strong>Returns:</strong></dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">None</span></code>: Statistics are printed to console and saved to CSV</p></li>
+</ul>
+</dd>
+<dt><strong>Output:</strong></dt><dd><ul class="simple">
+<li><p>Creates tile and mask files for each processed slide</p></li>
+<li><p>Generates <code class="docutils literal notranslate"><span class="pre">batch_processing_summary.csv</span></code> in the output directory</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Example:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">process_batch</span><span class="p">(</span>
+    <span class="s1">&#39;slides/&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;annotations/&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;output/&#39;</span><span class="p">,</span>
+    <span class="n">tile_size</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span>
+    <span class="n">save_only_annotated</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="data-structures">
+<h2>Data Structures<a class="headerlink" href="#data-structures" title="Link to this heading"></a></h2>
+<section id="statistics-dictionary">
+<h3>Statistics Dictionary<a class="headerlink" href="#statistics-dictionary" title="Link to this heading"></a></h3>
+<p>The statistics dictionary returned by <code class="docutils literal notranslate"><span class="pre">create_tiles_and_masks_for_slide</span></code> has the following structure:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s1">&#39;filename&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>              <span class="c1"># Slide basename without extension</span>
+    <span class="s1">&#39;total_tiles&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>            <span class="c1"># Total number of tiles processed</span>
+    <span class="s1">&#39;tiles_with_annotations&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="c1"># Number of tiles containing annotations</span>
+    <span class="s1">&#39;saved_tiles&#39;</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>            <span class="c1"># Number of tiles actually saved</span>
+    <span class="s1">&#39;tiles_dir&#39;</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>              <span class="c1"># Path to tiles directory</span>
+    <span class="s1">&#39;masks_dir&#39;</span><span class="p">:</span> <span class="nb">str</span>               <span class="c1"># Path to masks directory</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="usage.html" class="btn btn-neutral float-left" title="Usage" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="examples.html" class="btn btn-neutral float-right" title="Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Driven Paper.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
