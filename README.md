@@ -1,6 +1,13 @@
-# Whole Slide Image Annotation Extractor
+# BVSegNet
 
-A Python tool for extracting tiles from whole slide images (WSI) based on GeoJSON annotations. This tool is designed for processing histopathology images and preparing training data for machine learning models.
+Immunohistochemistry whole slide image dissection for Blood vessel segmentation 
+
+# Annotation extraction for training and validation
+
+This workflow supports all images supported by tifffile library and the annotations are performed within the open-source qupath software (https://qupath.github.io/)
+
+A Python tool for extracting tiles from whole slide images (WSI) based on GeoJSON annotations. This tool is designed for processing histopathology images and preparing training data and parsing for
+supervised and unsupervised learning models.
 
 ## Features
 
@@ -83,4 +90,5 @@ If you use this tool in your research, please cite:
 ```
 [Add citation information]
 ```
+
 
